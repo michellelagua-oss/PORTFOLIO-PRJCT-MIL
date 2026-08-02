@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kent Zuriel Q. Lagua — Portfolio</title>
+  <meta name="description" content="Kent Zuriel Q. Lagua — G12 STEM student portfolio. Futuristic dark aesthetic showcasing projects and accomplishments." />
+  <meta name="theme-color" content="#071023" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#03040a;
+      --panel:#0b1220;
+      --muted:#94a3b8;
+      --accent:#00ffe1; /* cyan */
+      --accent-2:#7b61ff; /* violet */
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --card: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --max-width:1100px;
+      color-scheme: dark;
+    }
+    /* reset */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(123,97,255,0.08), transparent 8%),
+        radial-gradient(1000px 500px at 95% 90%, rgba(0,255,225,0.06), transparent 8%),
+        var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      padding-bottom:60px;
+    }
+
+    /* moving nebula layer */
+    .bg-nebula {
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      mix-blend-mode:screen;
+      opacity:0.18;
+      background:
+        conic-gradient(from 200deg at 30% 30%, rgba(123,97,255,0.09), rgba(0,255,225,0.04), transparent 40%),
+        radial-gradient(600px 300px at 80% 20%, rgba(0,255,225,0.06), transparent 10%);
+      filter:blur(24px) saturate(120%);
+      animation: drift 30s linear infinite;
+    }
+    @keyframes drift{from{transform:translateY(-10px) translateX(0)} to{transform:translateY(10px) translateX(30px)}}
+
+    /* header / hero */
+    header{
+      max-width:var(--max-width);
+      margin:48px auto 24px;
+      padding:28px;
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      box-shadow: 0 8px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:24px;
+      align-items:center;
+    }
+    @media (max-width:900px){ header{grid-template-columns:1fr; padding:20px} }
+
+    .hero-left{
+      padding:6px 6px 6px 12px;
+    }
+    .eyebrow{
+      color:var(--muted);
+      font-weight:600;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-size:12px;
+      margin-bottom:12px;
+    }
+    h1{
+      font-family:Orbitron, Inter, sans-serif;
+      font-size:40px;
+      margin:0 0 6px 0;
+      line-height:1;
+      color:transparent;
+      -webkit-text-stroke: 0.6px rgba(255,255,255,0.06);
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      filter:drop-shadow(0 8px 28px rgba(123,97,255,0.12));
+    }
+    h1 .name-sub {
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      color:var(--muted);
+      -webkit-text-stroke:0;
+      background: none;
+    }
+    p.lead{
+      margin:12px 0 18px;
+      color:var(--muted);
+      max-width:62ch;
+    }
+
+    .hero-cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter:blur(6px);
+      box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+    }
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(0,255,225,0.06), rgba(123,97,255,0.04));
+      color:var(--accent);
+      border:1px solid rgba(0,255,225,0.14);
+    }
+    .btn-ghost{
+      color:var(--muted);
+      background:transparent;
+      border:1px dashed rgba(255,255,255,0.03);
+    }
+
+    /* hero-right card with lightning svg */
+    .hero-right{
+      position:relative;
+      height:220px;
+      border-radius:12px;
+      padding:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
+      overflow:hidden;
+    }
+    .glass-card{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .status{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 8px 32px rgba(123,97,255,0.12), inset 0 -6px 24px rgba(255,255,255,0.06);
+      display:grid;place-items:center;font-weight:800;color:#02111a;font-family:Orbitron;
+    }
+    .meta{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* content area */
+    .container{
+      max-width:var(--max-width);
+      margin:28px auto;
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:24px;
+    }
+    @media (max-width:1000px){ .container{grid-template-columns:1fr} }
+
+    /* left column */
+    main.card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 8px 40px rgba(2,6,23,0.5);
+    }
+
+    section h2{
+      margin:0 0 12px 0;
+      font-family:Orbitron;
+      font-size:18px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+    .about p{ color:var(--muted); line-height:1.6; margin:0 0 8px 0; }
+
+    /* achievements */
+    .badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .badge{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:10px 12px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:13px;
+      color:var(--accent);
+      box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    }
+
+    /* projects */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width:700px){ .projects-grid{grid-template-columns:1fr} }
+    .project{
+      background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .project-thumb{
+      width:70px;height:70px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      flex-shrink:0;
+      box-shadow:0 8px 28px rgba(0,0,0,0.6), inset 0 -8px 28px rgba(255,255,255,0.02);
+      display:grid;place-items:center;color:#020a0b;font-weight:800;font-family:Orbitron;
+    }
+    .project h3{ margin:0; font-size:15px; }
+    .project p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+
+    /* right sidebar */
+    aside.panel{
+      position:relative;
+      padding:18px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.02);
+      height:fit-content;
+    }
+    .skills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .skill{ padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.02); color:var(--muted); font-weight:600; font-size:13px; border:1px solid rgba(255,255,255,0.02); }
+
+    /* contact form simplified */
+    .contact form{ display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+    .contact input, .contact textarea{
+      background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--muted);
+    }
+
+    footer{ max-width:var(--max-width); margin:28px auto 80px; color:var(--muted); text-align:center; font-size:13px; }
+
+    /* lightning SVG overlay */
+    .lightning-wrap{
+      position:absolute; inset:0; pointer-events:none;
+    }
+    svg.lightning{ width:100%; height:100%; overflow:visible; }
+    path.zap{ stroke:var(--accent); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; fill:none; filter:drop-shadow(0 6px 26px rgba(0,255,225,0.16)); opacity:0; }
+    .flash{
+      position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); mix-blend-mode:overlay; opacity:0; pointer-events:none;
+    }
+
+    /* subtle hover */
+    .project:hover, .badge:hover { transform:translateY(-6px); transition:transform .32s cubic-bezier(.2,.9,.2,1); }
+
+    /* micro responsive */
+    @media (max-width:520px){
+      h1{ font-size:28px; }
+      .hero-right{ height:180px }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bg-nebula" aria-hidden="true"></div>
+
+  <header role="banner" aria-label="Portfolio header">
+    <div class="hero-left">
+      <div class="eyebrow">Media & Information Technology — Portfolio</div>
+      <h1>
+        Kent Zuriel Q. Lagua
+        <span class="name-sub">G12 STEM student — Media & Information Technology</span>
+      </h1>
+      <p class="lead">I craft multimedia projects, data-informed designs, and coding solutions with a futuristic aesthetic. This portfolio highlights my works, accomplishments, and skills from school projects and competitions.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects" title="View projects">View Works</a>
+        <a class="btn btn-ghost" href="#contact" title="Contact or download CV">Contact / Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="false">
+      <div class="glass-card">
+        <div class="status">
+          <div class="avatar" aria-hidden="true">KZ</div>
+          <div>
+            <div style="font-weight:800">Kent Zuriel Q. Lagua</div>
+            <div class="meta">Grade 12 • STEM • Media & Information Technology</div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+          <div style="color:var(--muted);font-size:13px">Focused on: Multimedia Design, Web Dev, Data Viz</div>
+          <div style="font-size:12px;color:var(--accent)">Available for school showcases</div>
+        </div>
+
+        <div class="lightning-wrap" aria-hidden="true">
+          <div class="flash" id="flash"></div>
+          <svg class="lightning" viewBox="0 0 360 220" preserveAspectRatio="none" role="img" aria-hidden="true">
+            <path id="zap1" class="zap" d="M220 10 L170 78 L200 78 L140 190 L180 110 L150 110 L220 10" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <main class="card" role="main">
+      <section class="about" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>Hello — I'm Kent. I combine media design and coding to make interactive school projects, short films, infographics, and data-driven presentations. I enjoy prototyping futuristic visuals and learning new tools like p5.js, Python data tools, and web tech.</p>
+        <p>I focus on clarity, usability, and a strong visual identity that stands out in showcases and competitions.</p>
+      </section>
+
+      <section class="achievements" id="achievements" style="margin-top:18px" aria-labelledby="achieve-title">
+        <h2 id="achieve-title">Accomplishments</h2>
+        <div class="badges" role="list">
+          <div class="badge" role="listitem">1st Place — Inter-School Media Project 2025</div>
+          <div class="badge" role="listitem">Best Infographic — STEM Expo 2024</div>
+          <div class="badge" role="listitem">Selected — Regional Coding Showcase</div>
+        </div>
+        <p style="color:var(--muted);margin-top:10px">Add dates, links, or short descriptions here to highlight each award or milestone.</p>
+      </section>
+
+      <section id="projects" style="margin-top:18px" aria-labelledby="projects-title">
+        <h2 id="projects-title">Selected Works</h2>
+        <div class="projects-grid" role="list">
+          <article class="project" role="listitem" aria-labelledby="proj1-title">
+            <div class="project-thumb">A1</div>
+            <div>
+              <h3 id="proj1-title">Interactive School Magazine</h3>
+              <p>A multimedia zine built with HTML/CSS/JS containing animated sections, embedded video, and responsive layout used for class publication.</p>
+            </div>
+          </article>
+
+          <article class="project" role="listitem" aria-labelledby="proj2-title">
+            <div class="project-thumb">D3</div>
+            <div>
+              <h3 id="proj2-title">Data Viz: Energy Usage</h3>
+              <p>Python + D3 interactive charts analyzing household energy patterns produced for a tech research module.</p>
+            </div>
+          </article>
+
+          <article class="project" role="listitem" aria-labelledby="proj3-title">
+            <div class="project-thumb">F2</div>
+            <div>
+              <h3 id="proj3-title">Short Film: Neon City</h3>
+              <p>A 3-minute narrative short exploring themes of technology and community; I directed and did motion graphics.</p>
+            </div>
+          </article>
+
+          <article class="project" role="listitem" aria-labelledby="proj4-title">
+            <div class="project-thumb">W</div>
+            <div>
+              <h3 id="proj4-title">Web Game Prototype</h3>
+              <p>Browser-based prototype using p5.js demonstrating procedural visuals and level mechanics for class demo.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="notes" style="margin-top:18px" aria-labelledby="notes-title">
+        <h2 id="notes-title">Notes for judges / teachers</h2>
+        <p style="color:var(--muted)">This portfolio is a short showcase. Use the buttons to link to source code, videos, or detailed project pages. Replace thumbnails with screenshots or video embeds for a stronger impression.</p>
+      </section>
+    </main>
+
+    <aside class="panel" role="complementary" aria-labelledby="sidebar-title">
+      <h2 id="sidebar-title">Quick Info</h2>
+
+      <div style="margin-top:8px">
+        <strong style="display:block">Contact</strong>
+        <div style="color:var(--muted);margin-top:6px">Email: <a href="mailto:kent@example.com" style="color:var(--accent)">kent@example.com</a></div>
+      </div>
+
+      <div style="margin-top:14px">
+        <strong style="display:block">Skills</strong>
+        <div class="skills" aria-hidden="false">
+          <div class="skill">HTML & CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">p5.js / Processing</div>
+          <div class="skill">Python / Data Viz</div>
+          <div class="skill">Video & Motion</div>
+          <div class="skill">Design Systems</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <strong style="display:block">Download</strong>
+        <div style="margin-top:8px">
+          <a class="btn btn-primary" href="#" onclick="alert('Replace this link with your resume file URL');return false">Download Resume</a>
+        </div>
+      </div>
+
+      <div class="contact" style="margin-top:18px" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <form onsubmit="alert('Form demo — wire up your mailer or use mailto:'); return false;">
+          <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+          <input type="email" name="email" placeholder="Email" aria-label="Your email" required>
+          <textarea name="message" rows="3" placeholder="Message" aria-label="Message"></textarea>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <footer role="contentinfo">
+    © <span id="year"></span> Kent Zuriel Q. Lagua — Built with a futuristic dark theme. Replace content with your own details for school showcases.
+  </footer>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightning animation control
+    const zap = document.getElementById('zap1');
+    const flash = document.getElementById('flash');
+
+    // Prepare stroke drawing
+    function animateZap() {
+      if(!zap) return;
+      zap.style.opacity = '1';
+      zap.style.transition = 'none';
+      const length = zap.getTotalLength();
+      zap.style.strokeDasharray = length;
+      zap.style.strokeDashoffset = length;
+      // force reflow
+      void zap.getBoundingClientRect();
+      zap.style.transition = 'stroke-dashoffset 280ms ease-in-out, opacity 220ms linear';
+      zap.style.strokeDashoffset = '0';
+      // flash pulse
+      flash.style.transition = 'opacity 100ms linear';
+      flash.style.opacity = '0.28';
+      setTimeout(()=>{ flash.style.opacity = '0.06'; }, 180);
+      setTimeout(()=>{ zap.style.opacity = '0'; }, 600);
+    }
+
+    // Randomize lightning events (every 8-22s)
+    (function scheduleLightning(){
+      const t = 8000 + Math.random()*14000;
+      setTimeout(()=>{ animateZap(); scheduleLightning(); }, t);
+    })();
+
+    // Make project thumbs keyboard focusable
+    document.querySelectorAll('.project').forEach((p,i)=>{
+      p.tabIndex = 0;
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+
+    // Accessibility: prefers-reduced-motion respect
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(prefersReduced.matches){
+      // stop animations
+      document.querySelectorAll('.bg-nebula, .lightning-wrap').forEach(el => el.style.animation = 'none');
+    }
+  </script>
+</body>
+</html>
