@@ -1,6 +1,6 @@
 # PORTFOLIO-PRJCT-MIL
 
-This repository contains a single-file student portfolio for Kent Zuriel Q. Lagua (G12 STEM). The site is a dark, futuristic one-page portfolio designed for Media & Information Technology showcases.
+This repository contains a single-file student portfolio for Kent Zuriel Q. Lagua (G12 STEM). The site now uses an elegant dark-gray theme designed for Media & Information Technology showcases.
 
 Files included:
 
@@ -17,4 +17,4 @@ How to publish with GitHub Pages:
 
 Customize:
 - Update the `index.html` file with your real contact email, project descriptions, thumbnails, and resume link.
-- If you want me to update content (projects, achievements, links), paste the details here and I will push the changes.
+- If you want me to update the projects/achievements with real content, paste the details here and I will commit them for you.
