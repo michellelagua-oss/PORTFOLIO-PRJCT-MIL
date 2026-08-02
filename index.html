@@ -4,419 +4,213 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kent Zuriel Q. Lagua — Portfolio</title>
-  <meta name="description" content="Kent Zuriel Q. Lagua — G12 STEM student portfolio. Elegant dark-gray aesthetic showcasing projects and accomplishments." />
+  <meta name="description" content="Kent Zuriel Q. Lagua — G12 STEM student portfolio. Elegant dark-gray aesthetic with smooth transitions and 3D effects." />
   <meta name="theme-color" content="#0f1113" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f1113; /* elegant dark gray */
-      --panel:#1a1a1c; /* card panels */
-      --muted:#bfc3c7; /* soft gray text */
-      --accent:#c9b27b; /* warm gold accent */
-      --accent-2:#8b8f94; /* cool silver accent */
-      --glass: rgba(255,255,255,0.02);
-      --glass-2: rgba(255,255,255,0.01);
-      --card: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --bg:#0f1113;
+      --panel:#17181a;
+      --muted:#b9bcc0;
+      --accent:#c9b27b; /* warm gold */
+      --accent-2:#9ea3a7; /* soft silver */
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --card: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
       --max-width:1100px;
       color-scheme: dark;
+      --transition-speed: 420ms;
     }
-    /* reset */
+
+    /* base */
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(900px 400px at 10% 10%, rgba(201,178,123,0.03), transparent 8%),
-        radial-gradient(900px 400px at 95% 90%, rgba(139,143,148,0.03), transparent 8%),
-        var(--bg);
-      color:#e9e6df;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
-      padding-bottom:60px;
+      margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(900px 400px at 10% 10%, rgba(201,178,123,0.02), transparent 8%), var(--bg);
+      color:#efece6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding-bottom:80px; overflow-x:hidden;
+      perspective:1000px;
     }
 
-    /* subtle moving sheen */
-    .bg-nebula {
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      mix-blend-mode:screen;
-      opacity:0.12;
-      background:
-        conic-gradient(from 200deg at 30% 30%, rgba(201,178,123,0.03), rgba(139,143,148,0.02), transparent 40%),
-        radial-gradient(600px 300px at 80% 20%, rgba(139,143,148,0.02), transparent 10%);
-      filter:blur(18px) saturate(100%);
-      animation: drift 28s linear infinite;
-    }
-    @keyframes drift{from{transform:translateY(-8px) translateX(0)} to{transform:translateY(8px) translateX(20px)}}
+    /* gentle moving sheen */
+    .bg-sheen{position:fixed;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0.08;filter:blur(26px) saturate(110%);background:radial-gradient(800px 400px at 80% 20%, rgba(158,163,167,0.03), transparent 10%);} 
 
-    /* header / hero */
-    header{
-      max-width:var(--max-width);
-      margin:48px auto 24px;
-      padding:26px;
-      border-radius:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      box-shadow: 0 8px 40px rgba(1,2,6,0.55), inset 0 1px 0 rgba(255,255,255,0.01);
-      display:grid;
-      grid-template-columns: 1fr 340px;
-      gap:20px;
-      align-items:center;
-    }
-    @media (max-width:900px){ header{grid-template-columns:1fr; padding:18px} }
+    /* layout */
+    header{max-width:var(--max-width);margin:48px auto 24px;padding:28px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));box-shadow:0 10px 40px rgba(1,1,2,0.6);display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
+    @media (max-width:900px){header{grid-template-columns:1fr;padding:18px}}
 
-    .hero-left{
-      padding:4px 6px 6px 12px;
-    }
-    .eyebrow{
-      color:var(--muted);
-      font-weight:600;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:12px;
-      opacity:0.95;
-    }
-    h1{
-      font-family:Orbitron, Inter, sans-serif;
-      font-size:36px;
-      margin:0 0 6px 0;
-      line-height:1;
-      color:transparent;
-      -webkit-text-stroke: 0.4px rgba(255,255,255,0.04);
-      background:linear-gradient(90deg, var(--accent-2), var(--accent));
-      -webkit-background-clip:text;
-      background-clip:text;
-      filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6));
-    }
-    h1 .name-sub {
-      display:block;
-      font-size:13px;
-      font-weight:600;
-      color:var(--muted);
-      -webkit-text-stroke:0;
-      background: none;
-    }
-    p.lead{
-      margin:12px 0 18px;
-      color:var(--muted);
-      max-width:62ch;
-      opacity:0.95;
-    }
+    .eye{color:var(--muted);font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:12px;margin-bottom:12px}
+    h1{font-family:'Playfair Display', serif;font-size:38px;margin:0 0 8px 0;line-height:1.02;background:linear-gradient(90deg,var(--accent-2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .sub{font-size:13px;color:var(--muted);font-weight:600;margin-top:6px}
+    p.lead{color:var(--muted);max-width:62ch;margin:12px 0 18px}
 
-    .hero-cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter:blur(6px);
-      box-shadow: 0 6px 18px rgba(1,2,6,0.55);
-      color:var(--muted);
-      background:transparent;
-    }
-    .btn-primary{
-      background: linear-gradient(90deg, rgba(201,178,123,0.06), rgba(139,143,148,0.03));
-      color:var(--accent);
-      border:1px solid rgba(201,178,123,0.12);
-    }
-    .btn-ghost{
-      color:var(--muted);
-      background:transparent;
-      border:1px dashed rgba(255,255,255,0.02);
-    }
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:999px;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted);cursor:pointer;transition:transform var(--transition-speed) cubic-bezier(.2,.9,.2,1), box-shadow var(--transition-speed)}
+    .btn-primary{background:linear-gradient(90deg, rgba(201,178,123,0.06), rgba(158,163,167,0.03));color:var(--accent);border:1px solid rgba(201,178,123,0.12)}
+    .btn:active{transform:translateY(2px) scale(0.995)}
 
-    /* hero-right card */
-    .hero-right{
-      position:relative;
-      height:200px;
-      border-radius:12px;
-      padding:16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.01);
-      overflow:hidden;
-    }
-    .glass-card{
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .status{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .avatar{
-      width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));
-      box-shadow:0 8px 28px rgba(0,0,0,0.5), inset 0 -4px 16px rgba(255,255,255,0.02);
-      display:grid;place-items:center;font-weight:800;color:#0b0b0b;font-family:Orbitron;
-    }
-    .meta{
-      color:var(--muted);
-      font-size:13px;
-    }
+    /* hero card - glass mirror */
+    .hero-card{position:relative;height:220px;border-radius:14px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));backdrop-filter:blur(8px) saturate(1.08);border:1px solid rgba(255,255,255,0.02);box-shadow:0 12px 40px rgba(2,4,6,0.6);overflow:hidden}
+    .hero-top{display:flex;gap:14px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:grid;place-items:center;font-weight:800;color:#0b0b0b;font-family:'Playfair Display'}
+    .meta{color:var(--muted);font-size:13px}
 
-    /* content area */
-    .container{
-      max-width:var(--max-width);
-      margin:28px auto;
-      padding:20px;
-      display:grid;
-      grid-template-columns: 1fr 380px;
-      gap:24px;
-    }
-    @media (max-width:1000px){ .container{grid-template-columns:1fr} }
+    .glass-highlight{margin-top:14px;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);backdrop-filter:blur(6px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 30px rgba(0,0,0,0.5);}
+    .glass-title{font-weight:700;color:var(--accent);font-family:'Playfair Display';margin:0}
+    .glass-desc{color:var(--muted);margin-top:6px;font-size:13px}
 
-    /* left column */
-    main.card{
-      background:var(--card);
-      padding:18px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,0.01);
-      box-shadow: 0 8px 40px rgba(1,2,6,0.45);
-    }
+    /* container */
+    .container{max-width:var(--max-width);margin:28px auto;padding:20px;display:grid;grid-template-columns:1fr 380px;gap:24px}
+    @media (max-width:1000px){.container{grid-template-columns:1fr}}
 
-    section h2{
-      margin:0 0 12px 0;
-      font-family:Orbitron;
-      font-size:18px;
-      background:linear-gradient(90deg,var(--accent-2),var(--accent));
-      -webkit-background-clip:text;
-      color:transparent;
-    }
-    .about p{ color:var(--muted); line-height:1.6; margin:0 0 8px 0; }
+    main.card{background:var(--card);padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.01);box-shadow:0 10px 40px rgba(2,4,8,0.4)}
+    section h2{font-family:'Playfair Display';font-size:18px;margin:0 0 12px 0;background:linear-gradient(90deg,var(--accent-2),var(--accent));-webkit-background-clip:text;color:transparent}
 
-    /* achievements */
-    .badges{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .badge{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.01);
-      padding:10px 12px;
-      border-radius:10px;
-      font-weight:600;
-      font-size:13px;
-      color:var(--accent-2);
-      box-shadow:0 6px 12px rgba(1,2,6,0.45);
-    }
+    /* remove robotic squares -> smooth rounded shapes */
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .badge{padding:10px 14px;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.01);color:var(--accent-2);font-weight:600;box-shadow:0 8px 18px rgba(0,0,0,0.45)}
 
-    /* projects */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:12px;
-    }
-    @media (max-width:700px){ .projects-grid{grid-template-columns:1fr} }
-    .project{
-      background: linear-gradient(135deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border-radius:12px;
-      padding:12px;
-      border:1px solid rgba(255,255,255,0.01);
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .project-thumb{
-      width:70px;height:70px;border-radius:8px;
-      background:linear-gradient(135deg,var(--accent-2),rgba(255,255,255,0.02));
-      flex-shrink:0;
-      box-shadow:0 8px 22px rgba(0,0,0,0.45), inset 0 -6px 18px rgba(255,255,255,0.01);
-      display:grid;place-items:center;color:#0b0b0b;font-weight:800;font-family:Orbitron;
-    }
-    .project h3{ margin:0; font-size:15px; color:#efece6 }
-    .project p{ margin:6px 0 0 0; color:var(--muted); font-size:13px; }
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
+    @media (max-width:700px){.projects-grid{grid-template-columns:1fr}}
+    .project{display:flex;gap:14px;align-items:center;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.01);box-shadow:0 10px 24px rgba(0,0,0,0.45);transform-origin:center;transition:transform var(--transition-speed) cubic-bezier(.2,.9,.2,1), box-shadow var(--transition-speed)}
+    .project:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 18px 40px rgba(0,0,0,0.55)}
 
-    /* right sidebar */
-    aside.panel{
-      position:relative;
-      padding:18px;
-      border-radius:12px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.01);
-      height:fit-content;
-    }
-    .skills{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
-    .skill{ padding:8px 10px; border-radius:999px; background:rgba(255,255,255,0.01); color:var(--muted); font-weight:600; font-size:13px; border:1px solid rgba(255,255,255,0.01); }
+    .thumb{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),rgba(255,255,255,0.02));display:grid;place-items:center;font-weight:800;color:#0b0b0b;font-family:'Playfair Display';box-shadow:inset 0 -8px 20px rgba(255,255,255,0.02)}
+    .project h3{margin:0;font-size:15px;color:#efece6}
+    .project p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
 
-    /* contact form simplified */
-    .contact form{ display:flex; flex-direction:column; gap:8px; margin-top:8px; }
-    .contact input, .contact textarea{
-      background:transparent;border:1px solid rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);
-    }
+    aside.panel{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.01);box-shadow:0 10px 30px rgba(0,0,0,0.45)}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.01);color:var(--muted);font-weight:600;font-size:13px;border:1px solid rgba(255,255,255,0.01)}
 
-    footer{ max-width:var(--max-width); margin:28px auto 80px; color:var(--muted); text-align:center; font-size:13px; }
+    /* footer */
+    footer{max-width:var(--max-width);margin:28px auto 80px;color:var(--muted);text-align:center;font-size:13px}
 
-    /* lightning SVG overlay */
-    .lightning-wrap{
-      position:absolute; inset:0; pointer-events:none;
-    }
-    svg.lightning{ width:100%; height:100%; overflow:visible; }
-    path.zap{ stroke:var(--accent-2); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; fill:none; filter:drop-shadow(0 6px 18px rgba(0,0,0,0.6)); opacity:0; }
-    .flash{
-      position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); mix-blend-mode:overlay; opacity:0; pointer-events:none;
-    }
+    /* reveal animations */
+    .reveal{opacity:0;transform:translateY(18px) scale(.995);transition:opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.in-view{opacity:1;transform:translateY(0) scale(1)}
 
-    /* subtle hover */
-    .project:hover, .badge:hover { transform:translateY(-6px); transition:transform .32s cubic-bezier(.2,.9,.2,1); }
+    /* subtle 3D tilt on pointer move */
+    .tilt{transform-style:preserve-3d;will-change:transform;transition:transform 280ms cubic-bezier(.2,.9,.2,1)}
 
-    /* micro responsive */
-    @media (max-width:520px){
-      h1{ font-size:26px; }
-      .hero-right{ height:160px }
-    }
+    /* focus and accessibility */
+    .project:focus{outline:2px solid rgba(201,178,123,0.18);outline-offset:6px}
 
+    @media (max-width:520px){h1{font-size:28px}.hero-card{height:180px}.thumb{width:64px;height:64px}}
   </style>
 </head>
 <body>
-  <div class="bg-nebula" aria-hidden="true"></div>
+  <div class="bg-sheen" aria-hidden="true"></div>
 
-  <header role="banner" aria-label="Portfolio header">
-    <div class="hero-left">
-      <div class="eyebrow">Media & Information Technology — Portfolio</div>
-      <h1>
-        Kent Zuriel Q. Lagua
-        <span class="name-sub">G12 STEM student — Media & Information Technology</span>
-      </h1>
-      <p class="lead">I craft multimedia projects, data-informed designs, and coding solutions with an elegant dark-gray aesthetic. This portfolio highlights my works, accomplishments, and skills from school projects and competitions.</p>
-
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#projects" title="View projects">View Works</a>
-        <a class="btn btn-ghost" href="#contact" title="Contact or download CV">Contact / Resume</a>
+  <header role="banner">
+    <div>
+      <div class="eye">Media & Information Technology — Portfolio</div>
+      <h1 id="hero-name">Kent Zuriel Q. Lagua</h1>
+      <div class="sub">G12 STEM student — Media & Information Technology</div>
+      <p class="lead">I create refined multimedia projects, data visualizations, and interactive web experiences with an elegant visual identity. Explore my work below.</p>
+      <div class="actions">
+        <button class="btn btn-primary" data-scroll="#projects">View Works</button>
+        <button class="btn" data-scroll="#contact">Contact / Resume</button>
       </div>
     </div>
 
-    <div class="hero-right" aria-hidden="false">
-      <div class="glass-card">
-        <div class="status">
-          <div class="avatar" aria-hidden="true">KZ</div>
-          <div>
-            <div style="font-weight:800">Kent Zuriel Q. Lagua</div>
-            <div class="meta">Grade 12 • STEM • Media & Information Technology</div>
-          </div>
+    <div class="hero-card tilt" id="hero-card" aria-hidden="false">
+      <div class="hero-top">
+        <div class="avatar">KZ</div>
+        <div>
+          <div style="font-weight:700">Kent Zuriel Q. Lagua</div>
+          <div class="meta">Grade 12 • STEM • Media & Information Technology</div>
         </div>
+      </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
-          <div style="color:var(--muted);font-size:13px">Focused on: Multimedia Design, Web Dev, Data Viz</div>
-          <div style="font-size:12px;color:var(--accent)">Available for school showcases</div>
-        </div>
-
-        <div class="lightning-wrap" aria-hidden="true">
-          <div class="flash" id="flash"></div>
-          <svg class="lightning" viewBox="0 0 360 220" preserveAspectRatio="none" role="img" aria-hidden="true">
-            <path id="zap1" class="zap" d="M220 10 L170 78 L200 78 L140 190 L180 110 L150 110 L220 10" />
-          </svg>
-        </div>
+      <div class="glass-highlight reveal" id="highlights">
+        <p class="glass-title">Accomplishments</p>
+        <p class="glass-desc">1st Place — Inter-School Media Project 2025 · Best Infographic — STEM Expo 2024 · Selected — Regional Coding Showcase. Click to expand each for details.</p>
       </div>
     </div>
   </header>
 
   <div class="container">
-    <main class="card" role="main">
-      <section class="about" id="about" aria-labelledby="about-title">
-        <h2 id="about-title">About</h2>
-        <p>Hello — I'm Kent. I combine media design and coding to make interactive school projects, short films, infographics, and data-driven presentations. I enjoy prototyping refined visuals and learning new tools like p5.js, Python data tools, and web tech.</p>
-        <p>I focus on clarity, usability, and an elegant visual identity that stands out in showcases and competitions.</p>
+    <main class="card">
+      <section id="about" class="reveal">
+        <h2>About</h2>
+        <p>Hello — I'm Kent. I combine media design and coding to make interactive school projects, short films, infographics, and data-driven presentations. I enjoy prototyping refined visuals and learning tools like p5.js and Python for data work.</p>
+        <p>I focus on clarity, usability, and an elegant identity that stands out in showcases and competitions.</p>
       </section>
 
-      <section class="achievements" id="achievements" style="margin-top:18px" aria-labelledby="achieve-title">
-        <h2 id="achieve-title">Accomplishments</h2>
-        <div class="badges" role="list">
-          <div class="badge" role="listitem">1st Place — Inter-School Media Project 2025</div>
-          <div class="badge" role="listitem">Best Infographic — STEM Expo 2024</div>
-          <div class="badge" role="listitem">Selected — Regional Coding Showcase</div>
-        </div>
-        <p style="color:var(--muted);margin-top:10px">Add dates, links, or short descriptions here to highlight each award or milestone.</p>
-      </section>
-
-      <section id="projects" style="margin-top:18px" aria-labelledby="projects-title">
-        <h2 id="projects-title">Selected Works</h2>
-        <div class="projects-grid" role="list">
-          <article class="project" role="listitem" aria-labelledby="proj1-title">
-            <div class="project-thumb">A1</div>
+      <section id="projects" style="margin-top:20px" class="reveal">
+        <h2>Selected Works</h2>
+        <div class="projects-grid">
+          <article class="project tilt" tabindex="0">
+            <div class="thumb">A1</div>
             <div>
-              <h3 id="proj1-title">Interactive School Magazine</h3>
-              <p>A multimedia zine built with HTML/CSS/JS containing tasteful animated sections, embedded video, and responsive layout used for class publication.</p>
+              <h3>Interactive School Magazine</h3>
+              <p>A tasteful multimedia zine built with responsive layout, subtle motion, and embedded video for class publication.</p>
             </div>
           </article>
 
-          <article class="project" role="listitem" aria-labelledby="proj2-title">
-            <div class="project-thumb">D3</div>
+          <article class="project tilt" tabindex="0">
+            <div class="thumb">D3</div>
             <div>
-              <h3 id="proj2-title">Data Viz: Energy Usage</h3>
-              <p>Python + D3 interactive charts analyzing household energy patterns produced for a tech research module.</p>
+              <h3>Data Viz: Energy Usage</h3>
+              <p>Interactive charts built with Python and D3 to reveal household energy patterns for a research module.</p>
             </div>
           </article>
 
-          <article class="project" role="listitem" aria-labelledby="proj3-title">
-            <div class="project-thumb">F2</div>
+          <article class="project tilt" tabindex="0">
+            <div class="thumb">F2</div>
             <div>
-              <h3 id="proj3-title">Short Film: Neon City</h3>
-              <p>A 3-minute narrative short exploring themes of technology and community; I directed and did motion graphics.</p>
+              <h3>Short Film: Neon City</h3>
+              <p>A short exploring technology and community with motion graphics and direction handled by me.</p>
             </div>
           </article>
 
-          <article class="project" role="listitem" aria-labelledby="proj4-title">
-            <div class="project-thumb">W</div>
+          <article class="project tilt" tabindex="0">
+            <div class="thumb">W</div>
             <div>
-              <h3 id="proj4-title">Web Game Prototype</h3>
-              <p>Browser-based prototype using p5.js demonstrating procedural visuals and level mechanics for class demo.</p>
+              <h3>Web Game Prototype</h3>
+              <p>Browser prototype using p5.js demonstrating procedural visuals and playful mechanics for demos.</p>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="notes" style="margin-top:18px" aria-labelledby="notes-title">
-        <h2 id="notes-title">Notes for judges / teachers</h2>
-        <p style="color:var(--muted)">This portfolio is a short showcase. Use the buttons to link to source code, videos, or detailed project pages. Replace thumbnails with screenshots or video embeds for a stronger impression.</p>
+      <section id="notes" style="margin-top:18px" class="reveal">
+        <h2>Notes for judges / teachers</h2>
+        <p style="color:var(--muted)">Replace thumbnails with screenshots or video embeds for a stronger impression. Each project card has subtle 3D tilt and will reveal on scroll.</p>
       </section>
     </main>
 
-    <aside class="panel" role="complementary" aria-labelledby="sidebar-title">
-      <h2 id="sidebar-title">Quick Info</h2>
-
-      <div style="margin-top:8px">
-        <strong style="display:block">Contact</strong>
+    <aside class="panel reveal" id="sidebar">
+      <h2>Quick Info</h2>
+      <div style="margin-top:10px">
+        <strong>Contact</strong>
         <div style="color:var(--muted);margin-top:6px">Email: <a href="mailto:kent@example.com" style="color:var(--accent)">kent@example.com</a></div>
       </div>
 
       <div style="margin-top:14px">
-        <strong style="display:block">Skills</strong>
-        <div class="skills" aria-hidden="false">
+        <strong>Skills</strong>
+        <div class="skills">
           <div class="skill">HTML & CSS</div>
           <div class="skill">JavaScript</div>
           <div class="skill">p5.js / Processing</div>
           <div class="skill">Python / Data Viz</div>
           <div class="skill">Video & Motion</div>
-          <div class="skill">Design Systems</div>
         </div>
       </div>
 
       <div style="margin-top:14px">
-        <strong style="display:block">Download</strong>
+        <strong>Download</strong>
         <div style="margin-top:8px">
           <a class="btn btn-primary" href="#" onclick="alert('Replace this link with your resume file URL');return false">Download Resume</a>
         </div>
       </div>
 
-      <div class="contact" style="margin-top:18px" id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">Contact</h2>
+      <div class="contact" style="margin-top:18px" id="contact">
+        <h2>Contact</h2>
         <form onsubmit="alert('Form demo — wire up your mailer or use mailto:'); return false;">
           <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
           <input type="email" name="email" placeholder="Email" aria-label="Your email" required>
@@ -427,61 +221,58 @@
     </aside>
   </div>
 
-  <footer role="contentinfo">
-    © <span id="year"></span> Kent Zuriel Q. Lagua — Elegant dark-gray theme. Replace content with your own details for school showcases.
-  </footer>
+  <footer>© <span id="year"></span> Kent Zuriel Q. Lagua — Elegant portfolio with smooth transitions.</footer>
 
   <script>
-    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lightning animation control
-    const zap = document.getElementById('zap1');
-    const flash = document.getElementById('flash');
+    // Smooth reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e => {
+        if(e.isIntersecting) { e.target.classList.add('in-view'); observer.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    reveals.forEach(r => observer.observe(r));
 
-    // Prepare stroke drawing
-    function animateZap() {
-      if(!zap) return;
-      zap.style.opacity = '1';
-      zap.style.transition = 'none';
-      const length = zap.getTotalLength();
-      zap.style.strokeDasharray = length;
-      zap.style.strokeDashoffset = length;
-      // force reflow
-      void zap.getBoundingClientRect();
-      zap.style.transition = 'stroke-dashoffset 280ms ease-in-out, opacity 220ms linear';
-      zap.style.strokeDashoffset = '0';
-      // flash pulse
-      flash.style.transition = 'opacity 120ms linear';
-      flash.style.opacity = '0.18';
-      setTimeout(()=>{ flash.style.opacity = '0.06'; }, 240);
-      setTimeout(()=>{ zap.style.opacity = '0'; }, 700);
-    }
-
-    // Randomize lightning events (every 10-26s)
-    (function scheduleLightning(){
-      const t = 10000 + Math.random()*16000;
-      setTimeout(()=>{ animateZap(); scheduleLightning(); }, t);
-    })();
-
-    // Make project thumbs keyboard focusable
-    document.querySelectorAll('.project').forEach((p,i)=>{
-      p.tabIndex = 0;
+    // 3D tilt effect for elements with .tilt
+    const tilts = document.querySelectorAll('.tilt');
+    tilts.forEach(el => {
+      el.addEventListener('pointermove', (ev) => {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+        const dx = ev.clientX - cx;
+        const dy = ev.clientY - cy;
+        const rx = (dy / rect.height) * -6; // rotateX
+        const ry = (dx / rect.width) * 10; // rotateY
+        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      });
+      el.addEventListener('pointerleave', ()=>{ el.style.transform = 'rotateX(0) rotateY(0)'; });
+      // press effect
+      el.addEventListener('pointerdown', ()=>{ el.style.transform += ' scale(0.995)'; });
+      el.addEventListener('pointerup', ()=>{ el.style.transform = 'rotateX(0) rotateY(0)'; });
     });
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    // Scroll-to buttons
+    document.querySelectorAll('[data-scroll]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const sel = btn.getAttribute('data-scroll');
+        const target = document.querySelector(sel);
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
 
-    // Accessibility: prefers-reduced-motion respect
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if(prefersReduced.matches){
-      // stop animations
-      document.querySelectorAll('.bg-nebula, .lightning-wrap').forEach(el => el.style.animation = 'none');
+    // make project cards interactive (keyboard friendly)
+    document.querySelectorAll('.project').forEach(card => {
+      card.addEventListener('click', ()=>{ card.classList.toggle('expanded'); });
+      card.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
+    });
+
+    // Respect reduced motion
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.tilt').forEach(el => { el.removeEventListener('pointermove',()=>{}); el.style.transform='none'; });
+      document.querySelectorAll('.reveal').forEach(r=>{ r.style.transition='none'; r.classList.add('in-view'); });
     }
   </script>
 </body>
